@@ -1,0 +1,64 @@
+﻿.picPanel ul,.picPanelul li{
+	padding:0;
+	margin:0;
+	list-style:none;
+}
+
+.picPanel {
+	
+	font-size:12px;
+	font-family:arial,simsun;
+}
+.slider{
+	width:400px;
+	height:300px;
+	padding:2px;
+	border:1px solid #ccc;
+	overflow:hidden;
+	position:relative;
+}
+.pic {
+	width:400px;
+	height:300px;
+	overflow:hidden;
+	position:absolute;
+}
+.num {
+	position:absolute;
+	bottom:20px;
+	right:10px;
+	height:20px;
+}
+.num li {
+	width:14px;
+	height:14px;
+	background:#000;
+	color:#fff;
+	margin:0 3px;
+	text-align:center;
+	line-height:14px;
+	font-size:10px;
+	cursor:pointer;
+	float:left;
+}
+.num .on {
+	font-weight:bold;
+	background:#ff0000;
+}
+.txt {
+	position:absolute;
+	bottom:2px;
+	height:20px;
+	width:400px;
+	opacity:0.6;
+	filter:alpha(opacity=60);
+	background:#000;
+	overflow:hidden;
+}
+.txt li {
+	color:#fff;
+	height:20px;
+	line-height:20px;
+	padding-left:8px;
+	z-index:99;
+}

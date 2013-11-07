@@ -1,0 +1,73 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>放大镜特效</title>
+		<style type="text/css">
+			body{
+				padding:0;
+				margin:0;
+			}
+			
+			.box {
+				width:900px;
+				margin:0 auto;
+				position:relative;
+			} 
+			
+			.picBox {
+				position:relative;
+				width:200px;
+			}
+			
+			.pic {
+				display:block;
+				float:left;
+				cursor:none;
+			}
+			
+			.picBox .cus {
+				position: absolute;
+				display:none;
+				background:url(img/biggerIcon.png) no-repeat;
+				width:32px;
+				height:32px; 
+				top:0;
+				left:0;
+				cursor:none;
+			}
+			
+			.bigerBox { 
+				position:absolute; 
+				left: 210px; 
+				top: 0;
+				width: 600px;
+				height: 500px;
+				overflow: hidden;
+				
+			}
+			
+			.bigerPic {
+				display: none;
+				position:relative;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>放大镜测试</h1>
+		<div class="box">
+			<div class="picBox">
+				<img  class = "pic" src="img/5.jpg" alt=""  width="200" bigSrc="img/5.jpg"/>
+				<div class="cus"></div>
+			</div> 
+			<div class="bigerBox">
+				<img src="" alt="" class="bigerPic"/>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery.biggerView.js"></script>
+		<script type="text/javascript"> 
+			$(".box").biggerView();
+		</script>
+	</body>
+</html>

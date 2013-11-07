@@ -1,0 +1,49 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>jQuery拖拽插件</title>
+		<style type="text/css">
+			#header {
+				background:#CCC;
+				height:50px;
+			}
+			
+			.jsDrag {
+				position:relative;
+				width:800px;
+				height:50px;
+				margin:0 auto;
+				background:#FF0;
+				border:1px solid #ccc;
+			}
+			
+			.drager {
+				background:#000;
+				width:10px;
+				height:10px;
+				position:absolute;
+				top:0;
+				left:0;
+				cursor:pointer;
+			}
+		</style>
+	</head>
+	<body>  
+		<div class="jsDrag" id="drag1">
+			<div class="drager"></div>
+		</div>
+		<div class="jsDrag" id="drag2">
+			<div class="drager"></div>
+		</div>
+		<div class="jsDrag" id="drag3">
+			<div class="drager"></div>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery.jsDrag.js"></script>
+		<script type="text/javascript">
+			$("#drag1").drag();
+			$("#drag2").drag({"type":"horizontal"});
+			$("#drag3").drag({"type":"vertical"});
+		</script>
+	</body>
+</html>

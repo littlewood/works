@@ -1,0 +1,51 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>图片轮播</title>
+		<link rel="stylesheet" href="css/jquery.picPlay.css" />
+	</head>
+	<body>
+		<p>完整的带有数字和文字的轮播，默认横向切换</p>
+		<div id="picOne" class="picPanel">
+			<div class="slider">
+				<div class="pic">
+					<ul>
+						<li><img src="img/1.jpg"/></li>
+						<li><img src="img/2.jpg"/></li>
+						<li><img src="img/3.jpg"/></li> 
+						<li><img src="img/4.jpg"/></li> 
+					</ul>
+				</div>
+				<div class="num"></div>
+				<div class="txt">
+					<ul>
+						<li>风景1</li>
+						<li>风景2</li>
+						<li>风景3</li>
+						<li>风景4</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<p>仅有图片的轮播，通过设置参数type来垂直切换</p>
+		<div id="picTwo" class="picPanel">
+			<div class="slider">
+				<div class="pic">
+					<ul>
+						<li><img src="img/4.jpg"/></li> 
+						<li><img src="img/1.jpg"/></li>
+						<li><img src="img/2.jpg"/></li>
+						<li><img src="img/3.jpg"/></li> 
+					</ul>
+				</div>
+			</div>
+		</div>
+		<p>如果当前页面需要多个轮播，且设置一样的话可以直接写$.fn.jsPicPlay();</p>
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery.picPlay.js"></script>
+		<script type="text/javascript">
+			$("#picOne").jsPicPlay();
+			$("#picTwo").jsPicPlay({type:2});
+		</script>
+	</body>
+</html>
