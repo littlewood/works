@@ -1,0 +1,83 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<title>页面拖动延迟加载</title>
+	<style type="text/css">
+		ul,li {
+			padding:0;
+			margin:0;
+			style-list:none;
+		}
+		
+		#main li {
+			height:40px;
+			line-height:40px;
+		}
+		body {
+			margin:0;
+			padding:0;
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		<ul id="list"></ul>
+		<p id="loading"></p>
+	</div>
+	<script type="text/javascript">
+		// 模拟数据
+		var data = [{"name":"kate",score:100},{"name":"jhon",score:90},{"name":"fatee",score:60},{"name":"katee",score:89},{"name":"jhon",score:90},{"name":"fatee",score:60},{"name":"jhon",score:90},{"name":"kate",score:100},{"name":"json",score:90},{"name":"fatee",score:60},{"name":"katee",score:89},{"name":"jhon",score:90},{"name":"fatee",score:60},{"name":"jhon",score:90},{"name":"kate",score:88},{"name":"jppn",score:90},{"name":"fassee",score:80},{"name":"katee",score:79},{"name":"jhon",score:90},{"name":"katee",score:89},{"name":"jhon",score:90},{"name":"fatee",score:60},{"name":"jhon",score:90},{"name":"kate",score:88},{"name":"jppn",score:90},{"name":"fassee",score:80},{"name":"katee",score:79},{"name":"jhon",score:90},{"name":"katee",score:89},{"name":"jhon",score:90},{"name":"fatee",score:60},{"name":"jhon",score:90},{"name":"kate",score:88},{"name":"jppn",score:90},{"name":"fassee",score:80},{"name":"katee",score:79},{"name":"jhon",score:90},{"name":"katee",score:89},{"name":"jhon",score:90},{"name":"fatee",score:60},{"name":"jhon",score:90},{"name":"kate",score:88},{"name":"jppn",score:90},{"name":"fassee",score:80},{"name":"katee",score:79},{"name":"jhon",score:90},{"name":"katee",score:89},{"name":"jhon",score:90},{"name":"fatee",score:60},{"name":"jhon",score:90},{"name":"kate",score:88},{"name":"jppn",score:90},{"name":"fassee",score:80},{"name":"katee",score:79},{"name":"jhon",score:90}];
+		var i =0;
+		var dom = document.getElementById("list");
+		var loading = document.getElementById("loading");
+		dom.innerHTML+=setHtml(data,0,20);
+		i=20; 
+		
+		var flag = true;
+		
+		// 事件监听
+		window.onscroll  = function (event) {
+			if (!flag) {
+				return;
+			}
+			
+			var topDom = document.documentElement;
+			var j ="";
+			var marginBot = 0;      // 当前视图距页面底部距离
+			
+			if (document.compatMode === "CSS1Compat"){
+				marginBot = document.documentElement.scrollHeight - (document.documentElement.scrollTop+document.body.scrollTop)-  document.documentElement.clientHeight;
+			} else {
+				marginBot = document.body.scrollHeight - document.body.scrollTop-  document.body.clientHeight;
+			}
+			
+			// 如果已经到底部
+			if(marginBot<=0) {
+				flag = false;
+				loading.innerHTML = "正在加载";
+				
+				// 模拟读取数据
+				setTimeout(function(){
+					var end = i+8;
+					if(end>data.length){
+						end = data.length;
+						window.onscroll = null;	
+					}
+		 
+					dom.innerHTML += setHtml(data,i,end);
+					loading.innerHTML = "";
+					flag = true;
+				},2000);			
+			}
+		}
+
+		function setHtml (data,start,end) {
+			var ht = "";
+			for(i=start;i<end;i++) {
+				ht+="<li>姓名："+data[i]["name"]+"分数："+data[i]["score"]+"</li>";
+			}
+			return ht;
+		}
+	</script>
+</body>
+</html>
