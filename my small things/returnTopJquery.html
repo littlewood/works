@@ -1,0 +1,76 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>回到顶部</title>
+		<style type="text/css">
+			html {
+				 _text-overflow:ellipsis;  //IE6下防抖动
+			}
+			
+			body {
+				margin:0;
+				padding:0;
+				font-size:12px;
+				font-family:arial,simsun,microsoftYahei;
+			}
+			
+			.main {
+				height:2000px;
+			}
+			
+			#returnTop {
+				display:block;
+				width:12px;
+				right:10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			
+		</div>
+		<a href="javascript:void(0)" id="returnTop">返回顶部</a>
+		<script type="text/javascript" src="http://common.cnblogs.com/script/jquery.js"></script>
+		<script type="text/javascript">
+			function returnTop() {
+				var btn = $("#returnTop");
+				var bot = 20;
+				var flag = checkBrowserVersion();
+				function checkBrowserVersion() {
+					var type = navigator.userAgent.toLowerCase();
+					var version = type.indexOf("msie")>-1 && parseInt(type.replace(/.*msie /,""));
+					return version && version <= 6 ? true : false;
+				}
+				function setStyle() {
+					btn.hide();
+					btn.css({position:flag?"absolute":"fixed",bottom:bot});
+				}
+				window.onscroll = function () {
+					var offsetTop = $(window).scrollTop();
+					var h = $(window).height();
+					if(offsetTop>h*0.6){
+						btn.show();
+					} else {
+						btn.hide();
+					} 
+					if(flag) {		
+						btn.css("top",(offsetTop + h - btn.height() - bot +"px"));
+					}
+				};
+				btn.click(function (){
+					var offsetTop = $(window).scrollTop();
+					if(offsetTop>0){
+						if(flag){
+							$(window).scrollTop(offsetTop-30);
+						}else {
+							$(window).scrollTop(offsetTop-20);
+						}
+						setTimeout(arguments.callee,10);
+					}
+				});
+				setStyle();
+			}
+			returnTop();
+		</script>
+	</body>
+</html>
