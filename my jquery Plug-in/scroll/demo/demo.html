@@ -1,0 +1,161 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>for temp</title>
+		<style type="text/css">
+			ul, li {
+				margin:0;
+				padding:0;
+				list-style:none;
+			}
+			
+			#roll {
+				width:540px;
+				margin:0 auto;
+				overflow:hidden;
+				position:relative;
+			}
+			#roll .rollPanel {
+				width:99999em;
+				height:80px; 
+				left:0;
+				top:0;
+				position:relative;
+			}
+			#roll ul {
+				position:absolute;
+				top:0;
+				left:0;
+			}
+			#roll li {
+				float:left;
+				width:100px;
+				height:80px;
+				background:#ccc;
+				margin-right:10px; 
+			}
+			
+			#roll3 {
+				width:540px;
+				margin:0 auto;
+				overflow:hidden;
+				position:relative;
+			}
+			#roll3 .rollPanel {
+				width:99999em;
+				height:80px; 
+				left:0;
+				top:0;
+				position:relative;
+			}
+			#roll3 ul {
+				position:absolute;
+				top:0;
+				left:0;
+			}
+			#roll3 li {
+				float:right;
+				width:100px;
+				height:80px;
+				background:#ccc;
+				margin-right:10px; 
+			}
+			
+			#roll2 {
+				width:100px;
+				height:440px;
+				margin:0 auto;
+				overflow:hidden;
+				position:relative;
+				margin-top:10px;
+				margin-bottom:10px;
+			}
+			#roll2 .rollPanel {
+				height:99999em;
+				width:100px; 
+				left:0;
+				top:0;
+				position:relative;
+			}
+			#roll2 ul {
+				position:absolute;
+				top:0;
+				left:0;
+			}
+			#roll2 li {
+				width:100px;
+				height:80px;
+				background:#ccc;
+				margin-bottom:10px; 
+			}
+		</style>
+	</head>
+	<body>
+		  
+		 <div id="roll" class="roll">
+			<div class="rollPanel">
+				<ul>
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+					<li>6</li>
+					<li>7</li>
+					<li>8</li>
+					<li>9</li>
+					<li>10</li>
+					<li>11</li>
+				</ul>
+			</div>
+		 </div>
+		 
+		  <div id="roll3" class="roll">
+			<div class="rollPanel">
+				<ul>
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+					<li>6</li>
+					<li>7</li>
+					<li>8</li>
+					<li>9</li>
+					<li>10</li>
+					<li>11</li>
+				</ul>
+			</div>
+		 </div>
+		 
+		 
+		 	 
+		 <div id="roll2" class="roll">
+			<div class="rollPanel">
+				<ul>
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+					<li>6</li>
+					<li>7</li>
+					<li>8</li>
+					<li>9</li>
+					<li>10</li>
+					<li>11</li>
+				</ul>
+			</div>
+		 </div>
+		 
+ 
+		 <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+		 <script type="text/javascript" src="js/jquery.scroll.js"></script> 
+		<script type="text/javascript">
+				
+			$("#roll").roll({type:"left"});
+			$("#roll3").roll({type:"right"});
+			$("#roll2").roll({type:"bottom"});  
+		</script>
+	</body>
+</html>
