@@ -1,7 +1,6 @@
 works
 =====
 
-# 放一些自己的作品
+# 练手
 
-* jQuery插件
-* javascript小特效
+
