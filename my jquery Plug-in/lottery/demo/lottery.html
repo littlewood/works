@@ -1,0 +1,85 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>抽奖demo</title>
+		<style type="text/css">
+			#lottery {
+				position:relative;
+				width: 200px;
+				height: 130px;
+				
+				background-color:#000;
+			}
+			.prizeList li {
+				position:absolute;
+				width:50px;
+				height: 50px;
+				background-color:#FFF;
+				list-style:none;
+				
+			}
+			
+			.pz1 {
+				top: 5px;
+				left: 5px;
+			}
+			
+			.pz2 {
+				top: 5px;
+				left: 60px;
+			}
+			
+			.pz3 {
+				top: 5px;
+				left: 115px;
+			}
+			
+			
+			.pz4 {
+				top: 60px;
+				left: 115px;
+			}
+			
+			.pz5 {
+				top: 60px;
+				left: 60px;
+			}
+			
+			.pz6 {
+				top: 60px; 
+				left: 5px;
+			}
+			
+			
+			.prizeList .on {
+				background-color:#ff0000;
+			}
+		</style>
+	</head>
+	<body>
+	
+		<div id="lottery">
+			<ul class="prizeList">
+				<li class="pz1">one</li> 
+				<li class="pz2">two</li> 
+				<li class="pz3">three</li> 
+				<li class="pz4">four</li> 
+				<li class="pz5">five</li> 
+				<li class="pz6">six</li> 
+			</ul>
+		</div>
+		<script type="text/javascript" src="jquery-1.10.2.min.js"></script> 
+		<script type="text/javascript" src="lottery.jquery.js"></script> 
+		<script type="text/javascript"> 
+			$("#lottery").lottery({
+				lotIndex: 0,
+				speedType: "change",
+				over: function() {
+					setTimeout(function() {
+						alert("恭喜中奖");
+					}, 300);
+				}
+			}); 
+		</script>
+	</body>
+</html>
