@@ -27,6 +27,7 @@ $.fn.extend({
 			onClass: def.onClass,
 			lotIndex: def.lotIndex,
 			overTime: def.overTime,
+			over: def.over,
 			init: function() { 
 				if (this.lotIndex >= this.itemLen) {
 					this.error();
@@ -90,7 +91,7 @@ $.fn.extend({
 				}, this.overTime);
 			},
 			stop: function() {
-				def.over();
+				this.over();
 			},
 			error: function() {
 			
