@@ -1,0 +1,97 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>概率抽奖</title>
+		<style type="text/css">
+			#lottery {
+				position:relative;
+				width: 200px;
+				height: 130px;
+				
+				background-color:#000;
+			}
+			.prizeList li {
+				position:absolute;
+				width:50px;
+				height: 50px;
+				background-color:#FFF;
+				list-style:none;
+				
+			}
+			
+			.pz1 {
+				top: 5px;
+				left: 5px;
+			}
+			
+			.pz2 {
+				top: 5px;
+				left: 60px;
+			}
+			
+			.pz3 {
+				top: 5px;
+				left: 115px;
+			}
+			
+			
+			.pz4 {
+				top: 60px;
+				left: 115px;
+			}
+			
+			.pz5 {
+				top: 60px;
+				left: 60px;
+			}
+			
+			.pz6 {
+				top: 60px; 
+				left: 5px;
+			}
+			
+			
+			.prizeList .on {
+				background-color:#ff0000;
+			}
+		</style>
+	</head>
+	<body>
+	
+		<div id="lottery">
+			<ul class="prizeList">
+				<li class="pz1">一等奖</li> 
+				<li class="pz2">二等奖</li> 
+				<li class="pz3">三等奖</li> 
+				<li class="pz4">四等奖</li> 
+				<li class="pz5">五等级</li> 
+				<li class="pz6">六等奖</li> 
+			</ul>
+		</div>
+		<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="lottery.jquery.js"></script>
+		<script type="text/javascript" src="probability.js"></script>
+		<script type="text/javascript"> 
+	 
+			
+		 
+			
+			var prob = [1, 5, 10, 15, 20, 100];
+			var titles = ["一等奖", "二等奖", "三等奖", "四等奖", "五等奖", "六等奖"];
+			var lotIndex = new Probability(prob).get();
+	 
+			$("#lottery").lottery({
+				lotIndex: lotIndex,
+				speedType: "change",
+				over: function() {
+					setTimeout(function() {
+						alert("恭喜抽中" + titles[lotIndex]);
+					}, 300);
+				}
+			});
+			
+			
+			
+		</script>
+	</body>
+</html>
