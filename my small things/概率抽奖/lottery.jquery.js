@@ -1,106 +1,58 @@
-$.fn.extend({
-	lottery: function(conf) { 
-		var def = { 
-			item: "li",
-			onClass: "on",
-			speedType: "",
-			overTime: 3000,
-			over: function() {}
-		};
+/**
+ * @author littlewood
+ * @email littlewoodwong@163.com
+ * */
+function Probability(conf) {
+	this.probArr = conf || [];
+	this.range = [],
+	this.len = this.probArr.length;
+	if (this.len > 0) { 
+		this.init();
+	}
+}
+
+Probability.prototype = {
+	init: function() {
+		this.setRange();
+	},
+	get: function() { 
+		var len = this.len,
+			range = this.range,
+			last,
+			randNum, 
+			i = 0;
 		
-		if (typeof conf.lotIndex === "undefined") {
-			return
+		if (len === 0) {
+			return;
+		} else if(len === 1) {
+			return 0;
 		}
 		
-		def = $.extend({}, def, conf);
-		
-		var $lotteryList = $(this),
-			$items = $lotteryList.find(def.item);
-		
-		var lotteryControl = { 
-			speedType: def.speedType,
-			$items: $items,
-			itemLen: $items.length, 
-			index: 0, 
-			speed: 50,
-			overFlag: false,
-			onClass: def.onClass,
-			lotIndex: def.lotIndex,
-			overTime: def.overTime,
-			over: def.over,
-			init: function() { 
-				if (this.lotIndex >= this.itemLen) {
-					this.error();
-				} else { 
-					this.start();
-				}
-			},
-			start: function() {
-				var self = this;
-				this.play(); 
-				this.setStop();
-				
-				switch (this.speedType) {
-					case "change": 
-						this.changeSpeed();
-						break;
-					
-				}
-			},
-			play: function() { 
-				var $items = this.$items;
-				
-				$items.eq(this.index - 1).removeClass(this.onClass);
-				$items.eq(this.index).addClass(this.onClass);
-				
-				if (this.overFlag && this.index === this.lotIndex) {
-					this.stop();
-				} else { 
-					this.next();
-				}
-			},
-			next: function() {
-				var self = this;
-				this.index++;
-				this.index = this.index === this.itemLen ? 0 : this.index;
-				setTimeout(function() {
-					self.play();
-				}, this.speed);
-			},
-			changeSpeed: function() {
-				var self = this,
-					interval = 500,
-					last = 600;
-					
-				setTimeout(function() {  
-					if (!self.overFlag) { 
-					
-						if (self.speed >= last) {
-							return;
-						} else {
-							self.speed = self.speed + 100;
-							self.changeSpeed();
-						}
-					}
-				}, interval);
-			},
-			setStop: function() {
-				var self = this;
-				setTimeout(function() { 
-					self.overFlag = true;
-				}, this.overTime);
-			},
-			stop: function() {
-				this.over();
-			},
-			error: function() {
+		last = range[len -1];
+		randNum = Math.floor(last* Math.random());
 			
+		for (; i < len; i++) { 
+			if (randNum < range[i]) {  
+				break;
 			}
-		};
+		} 
+		return i;
+	
+	},
+	
+	setRange: function() {
+		var range = [],
+			probArr = this.probArr,
+			i = 0,
+			len = probArr.length;
+			 
+		for(; i<len; i++) {
+			var now = probArr[i],
+				last = range[i-1] || 0; 
+				
+			range.push(now + last);
+		} 
 		
-		lotteryControl.init( );
-		
-		return this;
+		this.range = range;
 	}
-});
-			
+};
