@@ -1,3 +1,7 @@
+/**
+ * @author littlewood
+ * @email littlewoodwong@163.com
+ * */
 function Probability(conf) {
 	this.probArr = conf || [];
 	this.range = [],
